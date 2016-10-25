@@ -14,7 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.InputStream;
 
 /**
- * TODO description
+ * 读取xml配置文件
  *
  * @author BaoQiang
  * @version 2.0

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO description
+ * 读取配置文件抽象类
  *
  * @author BaoQiang
  * @version 2.0

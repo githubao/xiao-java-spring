@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Map;
 
 /**
- * TODO description
+ * xml配置文件读取测试
  *
  * @author BaoQiang
  * @version 2.0
