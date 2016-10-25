@@ -12,5 +12,5 @@ import me.xiao.spring.BeanDefinition;
 public interface BeanFactory {
     Object getBean(String name);
 
-    void registerBeanDefinition(String name, BeanDefinition beanDefinition);
+    void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception;
 }

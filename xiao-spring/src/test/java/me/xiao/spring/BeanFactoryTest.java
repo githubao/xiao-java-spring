@@ -23,6 +23,11 @@ public class BeanFactoryTest {
 
         BeanDefinition beanDefinition = new BeanDefinition();
         beanDefinition.setBeanClassName(helloXiaoBeanPath);
+
+        PropertyValues propertyValues = new PropertyValues();
+        propertyValues.addPropertyValue(new PropertyValue("text","Hello xiao"));
+        beanDefinition.setPropertyValues(propertyValues);
+
         beanFactory.registerBeanDefinition(helloXiaoBeanName, beanDefinition);
 
         HelloXiaoService iocHelloXiaoService = (HelloXiaoService) beanFactory.getBean(helloXiaoBeanName);

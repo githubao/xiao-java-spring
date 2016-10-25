@@ -8,7 +8,13 @@ package me.xiao.spring;
  * @Create at 2016/10/25 14:49
  */
 public class HelloXiaoService {
+    private String text;
+
     public void sayHello(){
-        System.out.println("hello xiao");
+        System.out.println(text);
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
