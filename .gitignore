@@ -12,3 +12,4 @@
 hs_err_pid*
 .idea/
 xiao-java-spring.iml
+xiao-spring/target/

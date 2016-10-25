@@ -10,11 +10,17 @@ package me.xiao.spring;
 public class HelloXiaoService {
     private String text;
 
-    public void sayHello(){
-        System.out.println(text);
+    private OutputService outputService;
+
+    public void sayHello() {
+        outputService.output(text);
     }
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setOutputService(OutputService outputService) {
+        this.outputService = outputService;
     }
 }

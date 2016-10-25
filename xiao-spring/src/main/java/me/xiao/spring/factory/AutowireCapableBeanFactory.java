@@ -1,6 +1,7 @@
 package me.xiao.spring.factory;
 
 import me.xiao.spring.BeanDefinition;
+import me.xiao.spring.BeanReference;
 import me.xiao.spring.PropertyValue;
 
 import java.lang.reflect.Field;
@@ -14,21 +15,27 @@ import java.lang.reflect.Field;
  */
 public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     @Override
-    protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception{
+    protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         Object bean = createBeanInstance(beanDefinition);
-        appPropertyValues(bean,beanDefinition);
+        appPropertyValues(bean, beanDefinition);
         return bean;
     }
 
-    protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception{
+    protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception {
         return beanDefinition.getBeanClass().newInstance();
     }
 
-    protected void appPropertyValues(Object bean, BeanDefinition mbd) throws Exception{
-        for (PropertyValue propertyValue: mbd.getPropertyValues().getPropertyValues()){
+    protected void appPropertyValues(Object bean, BeanDefinition mbd) throws Exception {
+        for (PropertyValue propertyValue : mbd.getPropertyValues().getPropertyValues()) {
             Field declaredFiled = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredFiled.setAccessible(true);
-            declaredFiled.set(bean,propertyValue.getValue());
+
+            Object value = propertyValue.getValue();
+            if (value instanceof BeanReference) {
+                BeanReference beanReference = (BeanReference) value;
+                value = getBean(beanReference.getName());
+            }
+            declaredFiled.set(bean, value);
         }
     }
 

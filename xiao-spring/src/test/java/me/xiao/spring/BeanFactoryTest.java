@@ -1,5 +1,6 @@
 package me.xiao.spring;
 
+import me.xiao.spring.factory.AbstractBeanFactory;
 import me.xiao.spring.factory.AutowireCapableBeanFactory;
 import me.xiao.spring.factory.BeanFactory;
 import me.xiao.spring.io.ResourceLoader;
@@ -19,7 +20,7 @@ import java.util.Map;
 public class BeanFactoryTest {
 
     @Test
-    public void testGetBean() throws Exception {
+    public void testLazy() throws Exception {
         String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getSimpleName());
 
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
@@ -27,12 +28,31 @@ public class BeanFactoryTest {
 
         BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
-        for (Map.Entry<String,BeanDefinition> entry: xmlBeanDefinitionReader.getRegistry().entrySet()){
-            beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
+        for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
         }
 
         HelloXiaoService iocHelloXiaoService = (HelloXiaoService) beanFactory.getBean(helloXiaoBeanName);
         iocHelloXiaoService.sayHello();
+    }
 
+    @Test
+    public void testPreInstantiate() throws Exception {
+        String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getSimpleName());
+
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
+        xmlBeanDefinitionReader.loadBeanDefinitions("xiao-ioc.xml");
+
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+
+        for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
+        }
+
+//        首先初始化
+        beanFactory.preInstantiateSingletons();
+
+        HelloXiaoService iocHelloXiaoService = (HelloXiaoService) beanFactory.getBean(helloXiaoBeanName);
+        iocHelloXiaoService.sayHello();
     }
 }

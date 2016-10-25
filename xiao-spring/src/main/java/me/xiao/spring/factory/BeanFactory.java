@@ -10,7 +10,7 @@ import me.xiao.spring.BeanDefinition;
  * @Create at 2016/10/25 14:44
  */
 public interface BeanFactory {
-    Object getBean(String name);
+    Object getBean(String name) throws Exception;
 
     void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception;
 }
