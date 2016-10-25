@@ -1,5 +1,7 @@
 package me.xiao.spring;
 
+import me.xiao.spring.factory.AutowireCapableBeanFactory;
+import me.xiao.spring.factory.BeanFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -14,12 +16,13 @@ public class BeanFactoryTest {
 
     @Test
     public void testGetBean() throws Exception {
-        BeanFactory beanFactory = new BeanFactory();
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
-        HelloXiaoService helloXiaoService = new HelloXiaoService();
-        String helloXiaoBeanName = StringUtils.uncapitalize(helloXiaoService.getClass().getName());
+        String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getName());
+        String helloXiaoBeanPath = "me.xiao.spring.HelloXiaoService";
 
-        BeanDefinition beanDefinition = new BeanDefinition(helloXiaoService);
+        BeanDefinition beanDefinition = new BeanDefinition();
+        beanDefinition.setBeanClassName(helloXiaoBeanPath);
         beanFactory.registerBeanDefinition(helloXiaoBeanName, beanDefinition);
 
         HelloXiaoService iocHelloXiaoService = (HelloXiaoService) beanFactory.getBean(helloXiaoBeanName);
