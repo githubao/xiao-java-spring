@@ -2,8 +2,12 @@ package me.xiao.spring;
 
 import me.xiao.spring.factory.AutowireCapableBeanFactory;
 import me.xiao.spring.factory.BeanFactory;
+import me.xiao.spring.io.ResourceLoader;
+import me.xiao.spring.xml.XmlBeanDefinitionReader;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * bean 工厂测试
@@ -16,19 +20,16 @@ public class BeanFactoryTest {
 
     @Test
     public void testGetBean() throws Exception {
+        String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getSimpleName());
+
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
+        xmlBeanDefinitionReader.loadBeanDefinitions("xiao-ioc.xml");
+
         BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
-        String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getName());
-        String helloXiaoBeanPath = "me.xiao.spring.HelloXiaoService";
-
-        BeanDefinition beanDefinition = new BeanDefinition();
-        beanDefinition.setBeanClassName(helloXiaoBeanPath);
-
-        PropertyValues propertyValues = new PropertyValues();
-        propertyValues.addPropertyValue(new PropertyValue("text","Hello xiao"));
-        beanDefinition.setPropertyValues(propertyValues);
-
-        beanFactory.registerBeanDefinition(helloXiaoBeanName, beanDefinition);
+        for (Map.Entry<String,BeanDefinition> entry: xmlBeanDefinitionReader.getRegistry().entrySet()){
+            beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
+        }
 
         HelloXiaoService iocHelloXiaoService = (HelloXiaoService) beanFactory.getBean(helloXiaoBeanName);
         iocHelloXiaoService.sayHello();
