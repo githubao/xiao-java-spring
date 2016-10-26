@@ -14,7 +14,7 @@
     </bean>
 
 
-    <bean name="helloXiaoService" class="me.xiao.spring.HelloXiaoService">
+    <bean name="helloXiaoService" class="me.xiao.spring.HelloXiaoServiceImpl">
         <property name="text" value="hello xiao, 5"/>
         <property name="outputService" ref="outputService"/>
     </bean>

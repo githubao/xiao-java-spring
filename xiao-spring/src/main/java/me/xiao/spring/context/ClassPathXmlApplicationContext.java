@@ -9,7 +9,7 @@ import me.xiao.spring.beans.xml.XmlBeanDefinitionReader;
 import java.util.Map;
 
 /**
- * TODO description
+ * xml配置的应用上下文
  *
  * @author BaoQiang
  * @version 2.0
