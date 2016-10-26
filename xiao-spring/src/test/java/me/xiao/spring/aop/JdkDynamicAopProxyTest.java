@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
- * TODO description
+ * 动态类代理测试
  *
  * @author BaoQiang
  * @version 2.0

@@ -1,4 +1,4 @@
-package me.xiao.spring.beans;
+package me.xiao.spring;
 
 /**
  * bean 对象的引用

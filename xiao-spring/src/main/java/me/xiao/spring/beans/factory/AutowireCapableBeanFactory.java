@@ -1,7 +1,7 @@
 package me.xiao.spring.beans.factory;
 
 import me.xiao.spring.beans.BeanDefinition;
-import me.xiao.spring.beans.BeanReference;
+import me.xiao.spring.BeanReference;
 import me.xiao.spring.beans.PropertyValue;
 
 import java.lang.reflect.Field;

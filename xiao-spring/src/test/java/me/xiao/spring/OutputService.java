@@ -1,5 +1,7 @@
 package me.xiao.spring;
 
+import org.junit.Assert;
+
 /**
  * 输出 服务
  *
@@ -8,14 +10,21 @@ package me.xiao.spring;
  * @Create at 2016/10/25 22:37
  */
 public class OutputService {
+    private HelloXiaoServiceImpl helloXiaoService;
 //    private HelloXiaoService helloXiaoService;
 
     public void output(String text) {
-//        Assert.assertNotNull(helloXiaoService);
+        Assert.assertNotNull(helloXiaoService);
         System.out.println(text);
     }
 
-//    public void setHelloXiaoService(HelloXiaoService helloXiaoService) {
-//        this.helloXiaoService = helloXiaoService;
-//    }
+    public void setHelloXiaoService(HelloXiaoServiceImpl helloXiaoService) {
+        this.helloXiaoService = helloXiaoService;
+    }
+
+    public HelloXiaoServiceImpl getHelloXiaoService() {
+        return helloXiaoService;
+    }
+
+
 }

@@ -2,7 +2,7 @@ package me.xiao.spring.beans.xml;
 
 import me.xiao.spring.beans.AbstractBeanDefinitionReader;
 import me.xiao.spring.beans.BeanDefinition;
-import me.xiao.spring.beans.BeanReference;
+import me.xiao.spring.BeanReference;
 import me.xiao.spring.beans.PropertyValue;
 import me.xiao.spring.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
