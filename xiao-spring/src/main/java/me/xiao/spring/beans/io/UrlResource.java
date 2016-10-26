@@ -1,4 +1,4 @@
-package me.xiao.spring.io;
+package me.xiao.spring.beans.io;
 
 import java.io.IOException;
 import java.io.InputStream;

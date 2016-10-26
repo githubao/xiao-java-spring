@@ -1,7 +1,7 @@
-package me.xiao.spring.xml;
+package me.xiao.spring.beans.xml;
 
-import me.xiao.spring.BeanDefinition;
-import me.xiao.spring.io.ResourceLoader;
+import me.xiao.spring.beans.BeanDefinition;
+import me.xiao.spring.beans.io.ResourceLoader;
 import org.junit.Assert;
 import org.junit.Test;
 

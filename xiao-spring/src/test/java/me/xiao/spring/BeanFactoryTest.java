@@ -1,10 +1,10 @@
 package me.xiao.spring;
 
-import me.xiao.spring.factory.AbstractBeanFactory;
-import me.xiao.spring.factory.AutowireCapableBeanFactory;
-import me.xiao.spring.factory.BeanFactory;
-import me.xiao.spring.io.ResourceLoader;
-import me.xiao.spring.xml.XmlBeanDefinitionReader;
+import me.xiao.spring.beans.BeanDefinition;
+import me.xiao.spring.beans.factory.AbstractBeanFactory;
+import me.xiao.spring.beans.factory.AutowireCapableBeanFactory;
+import me.xiao.spring.beans.io.ResourceLoader;
+import me.xiao.spring.beans.xml.XmlBeanDefinitionReader;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class BeanFactoryTest {
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
         xmlBeanDefinitionReader.loadBeanDefinitions("xiao-ioc.xml");
 
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
 
         for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
             beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());

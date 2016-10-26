@@ -1,7 +1,7 @@
-package me.xiao.spring;
+package me.xiao.spring.beans;
 
 /**
- * 从配置中读取eanDefinition的信息
+ * 从配置中读取beanDefinition的信息
  *
  * @author BaoQiang
  * @version 2.0

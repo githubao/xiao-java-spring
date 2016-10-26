@@ -1,6 +1,6 @@
-package me.xiao.spring;
+package me.xiao.spring.beans;
 
-import me.xiao.spring.io.ResourceLoader;
+import me.xiao.spring.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

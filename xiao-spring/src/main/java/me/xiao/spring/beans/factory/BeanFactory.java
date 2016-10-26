@@ -1,6 +1,4 @@
-package me.xiao.spring.factory;
-
-import me.xiao.spring.BeanDefinition;
+package me.xiao.spring.beans.factory;
 
 /**
  * Bean 工厂
@@ -11,6 +9,4 @@ import me.xiao.spring.BeanDefinition;
  */
 public interface BeanFactory {
     Object getBean(String name) throws Exception;
-
-    void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception;
 }

@@ -1,8 +1,8 @@
-package me.xiao.spring.factory;
+package me.xiao.spring.beans.factory;
 
-import me.xiao.spring.BeanDefinition;
-import me.xiao.spring.BeanReference;
-import me.xiao.spring.PropertyValue;
+import me.xiao.spring.beans.BeanDefinition;
+import me.xiao.spring.beans.BeanReference;
+import me.xiao.spring.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 

@@ -1,4 +1,4 @@
-package me.xiao.spring;
+package me.xiao.spring.beans;
 
 /**
  * bean 定义

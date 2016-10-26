@@ -1,6 +1,6 @@
-package me.xiao.spring.factory;
+package me.xiao.spring.beans.factory;
 
-import me.xiao.spring.BeanDefinition;
+import me.xiao.spring.beans.BeanDefinition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,7 +41,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         }
     }
 
-    @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
         beanDefinitionMap.put(name, beanDefinition);
         beanDefinitionNames.add(name);

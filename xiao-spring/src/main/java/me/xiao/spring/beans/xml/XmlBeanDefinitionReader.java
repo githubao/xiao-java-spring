@@ -1,10 +1,10 @@
-package me.xiao.spring.xml;
+package me.xiao.spring.beans.xml;
 
-import me.xiao.spring.AbstractBeanDefinitionReader;
-import me.xiao.spring.BeanDefinition;
-import me.xiao.spring.BeanReference;
-import me.xiao.spring.PropertyValue;
-import me.xiao.spring.io.ResourceLoader;
+import me.xiao.spring.beans.AbstractBeanDefinitionReader;
+import me.xiao.spring.beans.BeanDefinition;
+import me.xiao.spring.beans.BeanReference;
+import me.xiao.spring.beans.PropertyValue;
+import me.xiao.spring.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

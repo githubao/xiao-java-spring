@@ -1,4 +1,4 @@
-package me.xiao.spring;
+package me.xiao.spring.beans;
 
 /**
  * 用于bean的属性注入
