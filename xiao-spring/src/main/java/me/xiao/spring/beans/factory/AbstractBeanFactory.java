@@ -83,9 +83,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         return beanDefinition.getBeanClass().newInstance();
     }
 
-    protected void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception {
-
-    }
+    protected abstract void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception;
 
     public List getBeanForType(Class type) throws Exception {
         List<Object> beans = new ArrayList<>();

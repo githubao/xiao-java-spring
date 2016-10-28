@@ -14,18 +14,9 @@ import java.lang.reflect.Field;
  * @Create at 2016/10/25 15:18
  */
 public class AutowireCapableBeanFactory extends AbstractBeanFactory {
+
     @Override
-    protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
-        Object bean = createBeanInstance(beanDefinition);
-        appPropertyValues(bean, beanDefinition);
-        return bean;
-    }
-
-    protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception {
-        return beanDefinition.getBeanClass().newInstance();
-    }
-
-    protected void appPropertyValues(Object bean, BeanDefinition mbd) throws Exception {
+    protected void applyPropertyValues(Object bean, BeanDefinition mbd) throws Exception {
         for (PropertyValue propertyValue : mbd.getPropertyValues().getPropertyValues()) {
             Field declaredFiled = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredFiled.setAccessible(true);
@@ -38,5 +29,4 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
             declaredFiled.set(bean, value);
         }
     }
-
 }
