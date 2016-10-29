@@ -19,6 +19,8 @@ public class ApplicationContextTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("xiao-ioc.xml");
         HelloXiaoService helloXiaoService = (HelloXiaoService) context.getBean(helloXiaoBeanName);
         helloXiaoService.sayHello();
+
+        System.out.println("testApplicationContext end");
     }
 
     @Test
@@ -28,5 +30,7 @@ public class ApplicationContextTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("xiao-ioc-postbeanprocessor.xml");
         HelloXiaoService helloXiaoService = (HelloXiaoService) context.getBean(helloXiaoBeanName);
         helloXiaoService.sayHello();
+
+        System.out.println("testPostProcessor end");
     }
 }

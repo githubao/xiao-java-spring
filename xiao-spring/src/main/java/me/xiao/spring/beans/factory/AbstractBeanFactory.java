@@ -4,7 +4,6 @@ import me.xiao.spring.beans.BeanDefinition;
 import me.xiao.spring.beans.BeanPostProcessor;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,6 +32,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         if (bean == null) {
             bean = doCreateBean(beanDefinition);
             bean = initializeBean(bean, name);
+            beanDefinition.setBean(bean);
         }
 
         return bean;
@@ -53,8 +53,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
     }
 
     public void preInstantiateSingletons() throws Exception {
-        for (Iterator it = this.beanDefinitionNames.iterator(); it.hasNext(); ) {
-            String beanName = (String) it.next();
+        for (String beanName : this.beanDefinitionNames) {
             getBean(beanName);
         }
     }

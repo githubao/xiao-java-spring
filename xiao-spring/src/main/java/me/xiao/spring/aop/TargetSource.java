@@ -8,20 +8,28 @@ package me.xiao.spring.aop;
  * @Create at 2016/10/26 20:49
  */
 public class TargetSource {
-    private Class<?>[] targetClass;
+    private Class<?> targetClass;
+
+    private Class<?>[] interfaces;
+
     private Object target;
 
-    public TargetSource(Object target,Class<?>... targetClass) {
+    public TargetSource(Object target,Class<?> targetClass,Class<?>... interfaces) {
         this.targetClass = targetClass;
+        this.interfaces = interfaces;
         this.target = target;
     }
 
 
-    public Class<?>[] getTargetClass() {
+    public Class<?> getTargetClass() {
         return targetClass;
     }
 
     public Object getTarget() {
         return target;
+    }
+
+    public Class<?>[] getInterfaces() {
+        return interfaces;
     }
 }

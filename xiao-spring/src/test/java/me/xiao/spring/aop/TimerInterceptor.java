@@ -19,10 +19,8 @@ public class TimerInterceptor implements MethodInterceptor {
 
         Object proceed = invocation.proceed();
 
-        System.out.println("Invocation of Method: " + invocation.getMethod().getName() + " end!");
+        System.out.println("Invocation of Method: " + invocation.getMethod().getName() + " end!"+" total time：" + (System.currentTimeMillis() - startTime) + "(ms)");
 
-        long totalTime = System.currentTimeMillis() - startTime;
-        System.out.println("total time：" + totalTime + "(ms)");
 
         return proceed;
     }
