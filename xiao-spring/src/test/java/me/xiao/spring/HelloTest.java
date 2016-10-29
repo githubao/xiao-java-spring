@@ -13,5 +13,6 @@ public class HelloTest {
     @Test
     public void testMy() throws Exception {
         int i = 1;
+        int j = 1;
     }
 }
