@@ -13,7 +13,7 @@ import java.lang.reflect.Proxy;
  * @version 2.0
  * @Create at 2016/10/26 20:49
  */
-public class JdkDynamicAopProxy implements AopProxy,InvocationHandler{
+public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
     private AdvisedSupport advised;
 
     public JdkDynamicAopProxy(AdvisedSupport advised) {
@@ -22,12 +22,19 @@ public class JdkDynamicAopProxy implements AopProxy,InvocationHandler{
 
     @Override
     public Object getProxy() {
-        return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{advised.getTargetSource().getTargetClass()},this);
+        return Proxy.newProxyInstance(getClass().getClassLoader(), advised.getTargetSource().getTargetClass(), this);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MethodInterceptor methodInterceptor = advised.getMethodInterceptor();
-        return methodInterceptor.invoke(new ReflectiveMethodInvocation(advised.getTargetSource().getTarget(),method,args));
+
+        if (advised.getMethodMatcher() != null
+                && advised.getMethodMatcher().matches(method, advised.getTargetSource().getTarget().getClass())) {
+            return methodInterceptor.invoke(new ReflectiveMethodInvocation(advised.getTargetSource().getTarget(), method, args));
+        } else {
+            return method.invoke(advised.getTargetSource().getTarget(), args);
+        }
+
     }
 }

@@ -21,7 +21,7 @@ public class JdkDynamicAopProxyTest {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("xiao-ioc.xml");
         HelloXiaoService helloXiaoService = (HelloXiaoService) context.getBean(helloXiaoBeanName);
-        helloXiaoService.sayHello();
+//        helloXiaoService.sayHello();
 
 //        设置被代理对象，jointPoint
         AdvisedSupport advisedSupport = new AdvisedSupport();
@@ -29,8 +29,8 @@ public class JdkDynamicAopProxyTest {
         advisedSupport.setTargetSource(targetSource);
 
 //        设置拦截器
-        TimeInterceptor timeInterceptor = new TimeInterceptor();
-        advisedSupport.setMethodInterceptor(timeInterceptor);
+        TimerInterceptor timerInterceptor = new TimerInterceptor();
+        advisedSupport.setMethodInterceptor(timerInterceptor);
 
 //        创建代理
         JdkDynamicAopProxy jdkDynamicAopProxy = new JdkDynamicAopProxy(advisedSupport);

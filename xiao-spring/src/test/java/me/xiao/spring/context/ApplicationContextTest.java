@@ -20,4 +20,13 @@ public class ApplicationContextTest {
         HelloXiaoService helloXiaoService = (HelloXiaoService) context.getBean(helloXiaoBeanName);
         helloXiaoService.sayHello();
     }
+
+    @Test
+    public void testPostProcessor() throws Exception {
+        String helloXiaoBeanName = StringUtils.uncapitalize(HelloXiaoService.class.getSimpleName());
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("xiao-ioc-postbeanprocessor.xml");
+        HelloXiaoService helloXiaoService = (HelloXiaoService) context.getBean(helloXiaoBeanName);
+        helloXiaoService.sayHello();
+    }
 }

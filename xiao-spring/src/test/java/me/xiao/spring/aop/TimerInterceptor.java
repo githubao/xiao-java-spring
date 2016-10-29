@@ -10,7 +10,7 @@ import org.aopalliance.intercept.MethodInvocation;
  * @version 2.0
  * @Create at 2016/10/26 22:21
  */
-public class TimeInterceptor implements MethodInterceptor {
+public class TimerInterceptor implements MethodInterceptor {
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         long startTime = System.currentTimeMillis();
