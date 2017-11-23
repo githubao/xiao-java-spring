@@ -13,6 +13,7 @@ import org.springframework.boot.context.embedded.EmbeddedWebApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.FilterChain;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class SpringContext {
                 EmbeddedWebApplicationContext.class,
                 DispatcherServlet.class,
                 SpringApplication.class,
-                AbstractAutoProxyCreator.class);
+                AbstractAutoProxyCreator.class,
+                FilterChain.class);
 
         for (Class clazz : classes) {
             System.out.println(clazz.getCanonicalName());
